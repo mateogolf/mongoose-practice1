@@ -1,0 +1,27 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <meta http-equiv="X-UA-Compatible" content="ie=edge">
+    <title>Add a Mongoose</title>
+    <link rel="stylesheet" href="style.css">
+</head>
+<body>
+    <h1>Add a new Mongoose</h1>
+    <form action="/mongooses" method="POST">
+        <ul>
+            <% if(typeof(errors)!= 'undefined'){ %>
+                <% for(let x in errors){ %>
+                <li><%= errors[x].message %></li>
+                <%}%>
+            <%}%>
+        </ul>
+        <p>
+            <label>Name: <input type="text" name="name"></label>
+        </p>
+        <input type="submit" value="Add a Mongoose!">
+    </form>
+    <a href="/">Cancel</a>
+</body>
+</html>
