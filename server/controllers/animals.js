@@ -19,7 +19,7 @@ module.exports = {
     new:(req,res)=>{//GET view new form
         res.render('newAnimal');
     },
-    create:(req,res)=>{
+    create:(req,res)=>{//POST
         console.log("POST DATA:",req.body)
         var animal = new Animal(req.body);
         animal.save((err,newAnimal)=>{
@@ -41,9 +41,9 @@ module.exports = {
             res.render("editAnimal", { animal: animal })
         })
     },
-    update:(req,res)=>{
+    update:(req,res)=>{//PUT-similar to post, except for update
         console.log("POST DATA:", req.body)
-        var animal = new Animal(req.body);
+        var animal = new Animal(req.body);//only for errors
         Animal.update({_id:req.params.id},{name:req.body.name},(err,saved)=>{
             if(err) return res.render('editAnimal',{errors:animal.errors})
             console.log("Updated!",saved);
